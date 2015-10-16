@@ -19,7 +19,8 @@ public interface UserMapper {
 	@Select("select * from user")
 	public List<User> selectAll();
 	
-	@Insert("inser into user(username, firstname, lastName) values(#{userName}, #{firstName}, #{lastName})")
+	@Insert("insert into user(username, firstName, lastName, email, password) "
+			+ "values(#{userName}, #{firstName}, #{lastName},#{email},#{password})")
 	public void insert(User user);
 
 }

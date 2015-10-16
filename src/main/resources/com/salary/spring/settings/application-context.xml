@@ -22,7 +22,7 @@
 	</bean>
 	<bean id="propertyConfigurer"
           class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
-          p:location="classpath:/propertise/jdbc.properties" />
+          p:location="classpath:/com/salary/spring/propertise/jdbc.properties" />
 
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">

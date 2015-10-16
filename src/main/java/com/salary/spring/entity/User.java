@@ -55,24 +55,5 @@ public class User implements Serializable {
 	public void setDate(String date) {
 		this.date = date;
 	}
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-	public User(String userName, String firstName, String lastName,
-			String email, String password, String date) {
-		super();
-		this.userName = userName;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-		this.password = password;
-		this.date = date;
-	}
-	
-	public User() {
-		super();
-	}
-	
-	
 
 }

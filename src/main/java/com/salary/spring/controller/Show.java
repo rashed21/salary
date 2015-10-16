@@ -32,8 +32,19 @@ public class Show {
 		if (userlist.size()>0) {
 			userentity =userlist.get(0);
 		}
-		m.addAttribute("user", userentity.getFirstName());
+		m.addAttribute("user", new User());
+		m.addAttribute("firstname", userentity.getFirstName());
 		return "showMessage";
+	}
+	
+	
+	@RequestMapping(value="/insert" ,method=RequestMethod.POST)
+	public String insert(User u){
+		
+		userservice.insert(u);
+		
+		return "redirect:/show";
+		
 	}
 
 }
