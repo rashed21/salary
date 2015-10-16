@@ -1,0 +1,6 @@
+## git ignore STS
+.classpath
+.project
+.springBeans
+.settings/
+target/
