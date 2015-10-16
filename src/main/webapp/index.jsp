@@ -11,6 +11,7 @@
 		<title>Welcome</title>
 	</head> 
 	<body>
+	<h3>Welcome Salary Sheet Spring Mybaties project</h3>
 		<c:url value="/show" var="messageUrl" />
 		<a href="${messageUrl}">Click to enter</a>
 	</body>
