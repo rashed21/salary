@@ -12,7 +12,15 @@
 	<body>
 	<h3>Welcome Salary Sheet Spring Mybaties project</h3>
 		<c:url value="/show" var="messageUrl" />
+		<c:url value="/institute" var="institutionUrl"></c:url>
 		
-		<a href="${messageUrl}">Click to enter</a>
+		<c:url value="/salary" var="salaryUrl"></c:url>
+		
+		
+		
+		<a href="${messageUrl}">User Info</a> <br/>  <br/>
+		<a href="${institutionUrl}">Institution Info</a><br/><br/>
+		<a href="${salaryUrl}">Salary Page</a>
+		
 	</body>
 </html>

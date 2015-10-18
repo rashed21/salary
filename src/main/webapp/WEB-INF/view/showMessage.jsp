@@ -11,8 +11,15 @@
 		<title>Welcome</title>
 	</head> 
 	<body>
-	<c:url value="/insert" var="insert" />
-		<h2>welcome ${firstname} spring configuration</h2>
+	
+	
+	
+	
+	
+		<h2>welcome ${userentity.firstname} spring configuration</h2>
+		
+		
+		<c:url value="/insert" var="insert" />
 		<form:form action="${insert}" method="post" commandName="user">
 		User  Name
 		<form:input type="text" path="userName"/><br/>
@@ -33,5 +40,30 @@
 		<input type="submit" value="Insert"/>
 		 
 		</form:form>
+		
+		
+		
+		<center>
+		<h2>User Info List</h2>
+	</center>
+
+	<c:if test="${not empty lists}">
+
+		<center>
+			<c:forEach var="listValue" items="${lists}">
+				<c:out value="${listValue.firstName}"></c:out>&nbsp;&nbsp;
+				
+				<c:out value="${listValue.userName}"></c:out>&nbsp;&nbsp;
+				
+				
+				<c:out value="${listValue.lastName}"></c:out>&nbsp;&nbsp;
+				<c:out value="${listValue.email}"></c:out>&nbsp;&nbsp;
+				
+				
+				<br />
+				<br />
+			</c:forEach>
+		</center>
+	</c:if>
 	</body>
 </html>
