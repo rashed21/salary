@@ -51,4 +51,9 @@ public class InstitutionServiceImpl implements InstitutionService {
 		return institutionMapper.getById(m);
 	}
 
+	public Institution getByName(String name) {
+		return institutionMapper.getByName(name);
+		
+	}
+
 }

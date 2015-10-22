@@ -15,16 +15,22 @@ public class Calculation implements Serializable {
 
 	
 	
-	public Salary calculation(Double basic){
+	public Salary calculation(Salary sal){
 		Salary salary=new Salary();
-		salary.setBsaic(basic);
-		salary.setHomeRent(houseRent(basic));
-		salary.setMedical(medical());
-		salary.setEducation(eduAllowance());
+		salary.setBsaic(sal.getBsaic());
+		salary.setHomeRent(houseRent(sal.getBsaic()));
+		salary.setMedical(medical());		
 		salary.setTifin(tiffin());
 		salary.setTransport(transport());
-		salary.setExtra(allowance(basic));
-		
+		salary.setExtra(allowance(sal.getBsaic()));
+		salary.setEducation(sal.getEducation());
+		salary.setEmpName(sal.getEmpName());
+		salary.setOthers(sal.getOthers());
+		salary.setProFund(sal.getProFund());
+		salary.setOlherLoan(sal.getOlherLoan());
+		salary.setLoan(sal.getLoan());
+		salary.setInsIdfk(sal.getInsIdfk());
+	
 		return salary;
 		
 	}
@@ -69,11 +75,7 @@ public class Calculation implements Serializable {
 		
 	}
 	
-	public double eduAllowance(){
-		double eduallowance=250.00;
-		return eduallowance;
-	}
-	
+
 	
 	//FLOOR(IF(C12<4500,0,IF(C12*20%<1500,1500,C12*20%)),1)
 	

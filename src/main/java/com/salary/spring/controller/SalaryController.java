@@ -18,9 +18,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 
+
 import com.salary.spring.businesslogic.Calculation;
 import com.salary.spring.entity.Institution;
 import com.salary.spring.entity.Salary;
+import com.salary.spring.service.InstitutionService;
 import com.salary.spring.service.SalaryService;
 
 /**
@@ -33,6 +35,9 @@ public class SalaryController {
 	
 	@Autowired
 	SalaryService salaryService;
+	
+	@Autowired
+	InstitutionService institutionSer;
 	
 	Calculation calculation=new Calculation();
 	
@@ -51,11 +56,21 @@ public class SalaryController {
 	public ModelAndView index(ModelMap m,Salary value, ModelAndView mv){
 		
 		List<Salary> salaryList= salaryService.selectAll();
-	m.addAttribute("salary", new Salary());
-//		//return back to institution.jsp
+		
+		List<Salary> salGroupBy= salaryService.selectAllGroubBy();
+//		for listitution List
+		List<Institution> insList= institutionSer.selectAll();
+		
+		
+		
+		m.addAttribute("salary", new Salary());
+		m.addAttribute("institute", new Institution());	
+		
+//		//return back to salary.jsp
 		ModelAndView model = new ModelAndView("salary");
 		model.addObject("saLists", salaryList);
-		
+		model.addObject("lists", insList);
+		model.addObject("salaryListGroupBy", salGroupBy);
 		return model;	
 	}
 	
@@ -63,10 +78,12 @@ public class SalaryController {
 	@RequestMapping(value="/addSalary" ,method=RequestMethod.POST)	
 	public String insert(Salary salary){
 		Salary calculateSalary=new Salary();
-		calculateSalary=calculation.calculation(salary.getBsaic());
-		calculateSalary.setEmpName(salary.getEmpName());
-	//salary.setHomeRent=	calculation.calculation(salary.getBsaic());
+		calculateSalary=calculation.calculation(salary);		
 		salaryService.insert(calculateSalary);
+		
+		Institution institution=new Institution();
+		institution=institutionSer.getByName("0,Karatitola");
+	System.out.println(institution.getLocation());
 		
 
 		return "redirect:/salary";

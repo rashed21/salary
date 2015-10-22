@@ -23,6 +23,11 @@ public class SalaryServiceImpl implements SalaryService {
 		return salaryMapper.selectAll();
 	}
 
+	
+	@Transactional(readOnly=true)
+	public List<Salary> selectAllGroubBy() {
+		return salaryMapper.selectAllGroubBy();
+	}
 	@Transactional
 	public void insert(Salary salary) {
 		salaryMapper.insert(salary);
@@ -43,5 +48,6 @@ public class SalaryServiceImpl implements SalaryService {
 	public Salary getById(Integer id) {		
 		return salaryMapper.getById(id);
 	}
+
 
 }

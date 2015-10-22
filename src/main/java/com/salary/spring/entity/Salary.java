@@ -37,6 +37,7 @@ public class Salary implements Serializable{
 	private double loan;
 	
 	private double olherLoan;
+	
 
 	public int getSalId() {
 		return salId;

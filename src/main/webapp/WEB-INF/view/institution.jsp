@@ -35,8 +35,8 @@ Institution Name
 			<option value="0">Select a project manager</option>
 
 			<c:forEach var="listValue" items="${lists}">
-				<option value="10">
-					<c:out value="${listValue.insName}" /></option>
+				
+					<option><c:out value="${listValue.insName}"/></option>
 			</c:forEach>
 		</select>
 		<br />
@@ -91,6 +91,11 @@ Institution Name
 			</c:forEach>
 		</center>
 	</c:if>
+	
+	
+	
+	
+	
 
 </body>
 </html>

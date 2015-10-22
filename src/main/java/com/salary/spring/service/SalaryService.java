@@ -17,6 +17,8 @@ public interface SalaryService {
 
 	
 public List<Salary> selectAll();
+
+public List<Salary> selectAllGroubBy();
 	
 	public void insert(Salary salary);
 	

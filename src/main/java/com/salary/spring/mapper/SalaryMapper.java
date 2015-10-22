@@ -19,12 +19,14 @@ import com.salary.spring.entity.Salary;
 public interface SalaryMapper  {
 	
 	
-	@Select("select * from salarys ")
+	@Select("select * from salarys ORDER BY insIdfk")
 	public List<Salary> selectAll();
 	
+	@Select("select insIdfk, sum(bsaic) as bsaic,  sum(homeRent) as homeRent, sum(medical) as medical, sum(tifin) as tifin, sum(transport) as transport, sum(education) as education, sum(extra) as extra, sum(others) as others, sum(proFund) as proFund, sum(loan) as loan, sum(olherLoan) as olherLoan from salarys GROUP BY insIdfk ORDER BY insIdfk ")
+	public List<Salary> selectAllGroubBy();
 	
-	@Insert("insert into salarys(empName, bsaic, homeRent, medical, tifin,transport, education, extra, others, proFund,loan,olherLoan) "
-			+ "values(#{empName}, #{bsaic}, #{homeRent}, #{medical}, #{tifin}, #{transport}, #{education}, #{extra}, #{others}, #{proFund}, #{loan}, #{olherLoan})")
+	@Insert("insert into salarys(insIdfk,empName, bsaic, homeRent, medical, tifin,transport, education, extra, others, proFund,loan,olherLoan) "
+			+ "values(#{insIdfk}, #{empName}, #{bsaic}, #{homeRent}, #{medical}, #{tifin}, #{transport}, #{education}, #{extra}, #{others}, #{proFund}, #{loan}, #{olherLoan})")
 	public void insert(Salary salary);
 	
 	

@@ -17,5 +17,6 @@ public interface InstitutionService {
 	public void delete(Integer institution);
 	
 	 public Institution getById(Integer m);
+	 public Institution getByName(String m);
 	
 }

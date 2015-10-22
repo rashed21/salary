@@ -34,4 +34,10 @@ public interface InstitutionMapper {
 	
 	@Select("select * from insInfo WHERE insId=#{id}")
 	public Institution getById(Integer id) ;
+	
+	@Select("select * from insInfo WHERE insName=#{name}")
+	public Institution getByName(String name) ;
+	
+	
+	
 }
