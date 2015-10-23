@@ -16,11 +16,17 @@
 		
 		<c:url value="/salary" var="salaryUrl"></c:url>
 		
+		<c:url value="/employee" var="employeeUrl"></c:url>
+		
+		
+		
 		
 		
 		<a href="${messageUrl}">User Info</a> <br/>  <br/>
 		<a href="${institutionUrl}">Institution Info</a><br/><br/>
 		<a href="${salaryUrl}">Salary Page</a>
+		
+		<a href="${employeeUrl}">Salary Page</a>
 		
 	</body>
 </html>

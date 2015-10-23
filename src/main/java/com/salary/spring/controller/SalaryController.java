@@ -55,9 +55,9 @@ public class SalaryController {
 	@RequestMapping(value="/salary" ,method=RequestMethod.GET)
 	public ModelAndView index(ModelMap m,Salary value, ModelAndView mv){
 		
-		List<Salary> salaryList= salaryService.selectAll();
+		List<Salary> salaryList= salaryService.selectAll(1);
 		
-		List<Salary> salGroupBy= salaryService.selectAllGroubBy();
+		List<Salary> salGroupBy= salaryService.selectAllGroubBy(1);
 //		for listitution List
 		List<Institution> insList= institutionSer.selectAll();
 		

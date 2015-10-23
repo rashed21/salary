@@ -16,9 +16,9 @@ import com.salary.spring.entity.Salary;
 public interface SalaryService {
 
 	
-public List<Salary> selectAll();
+public List<Salary> selectAll(Integer id);
 
-public List<Salary> selectAllGroubBy();
+public List<Salary> selectAllGroubBy(Integer id);
 	
 	public void insert(Salary salary);
 	

@@ -29,14 +29,12 @@
 		<a href="${institutionUrl}">Institution Info</a><br/><br/>
 		<a href="${messageUrl}">User Info</a> <br/>  <br/>
 		
-		
-
 
 	<c:url value="/addSalary" var="insert" />
 	<form:form action="${insert}" method="post" commandName="salary">
 	
 	Institution Name
-	<form:select path="insIdfk">
+	<form:select path="insIdfk"  name="state" onchange="this.form.submit();">
 	 <form:option value="0" label="--Select One--" />
 	<c:forEach var="listValue" items="${lists}">
 	 <form:option value="${listValue.insId}" label="${listValue.insName}" />
