@@ -32,6 +32,10 @@
 		<property name="password" value="123" />
 	</bean>
 
+
+
+
+
 	<tx:annotation-driven transaction-manager="transactionManager" />
     <bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
