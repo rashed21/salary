@@ -24,18 +24,20 @@
           class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
           p:location="classpath:/com/salary/spring/propertise/jdbc.properties" />
 
-	<bean id="dataSource"
+	<!-- <bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost:3306/salary?zeroDateTimeBehavior=convertToNull" />
 		<property name="username" value="root" />
 		<property name="password" value="123" />
+	</bean> -->
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://127.9.244.130:3306/salary?zeroDateTimeBehavior=convertToNull" />
+		<property name="username" value="adminHMVW4he" />
+		<property name="password" value="WcTVM86u9sxx" />
 	</bean>
-
-
-
-
-
 	<tx:annotation-driven transaction-manager="transactionManager" />
     <bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">

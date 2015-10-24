@@ -19,23 +19,23 @@ import com.salary.spring.entity.User;
 
 public interface InstitutionMapper {
 
-	@Select("select * from insInfo ")
+	@Select("select * from insinfo ")
 	public List<Institution> selectAll();
 	
-	@Insert("insert into insInfo(userId, insName, location) "
+	@Insert("insert into insinfo(userId, insName, location) "
 			+ "values(#{userId}, #{insName}, #{location})")
 	public void insert(Institution institution);
 	
-	@Update("UPDATE insInfo SET insName=#{insName}, location=#{location} WHERE insId=#{insId}")
+	@Update("UPDATE insinfo SET insName=#{insName}, location=#{location} WHERE insId=#{insId}")
 	public void update(Institution institution);
 	
-	@Delete("DELETE FROM insInfo WHERE insId=#{insId}")
+	@Delete("DELETE FROM insinfo WHERE insId=#{insId}")
 	public void delete(Integer institution);
 	
-	@Select("select * from insInfo WHERE insId=#{id}")
+	@Select("select * from insinfo WHERE insId=#{id}")
 	public Institution getById(Integer id) ;
 	
-	@Select("select * from insInfo WHERE insName=#{name}")
+	@Select("select * from insinfo WHERE insName=#{name}")
 	public Institution getByName(String name) ;
 	
 	
