@@ -24,4 +24,7 @@ public interface EmployeeMapper extends Serializable {
 	@Delete("DELETE FROM employee WHERE empId=#{id}")
 	public void delete(Integer id);
 	
+	
+	@Select("select * from employee WHERE empId=#{id}")
+	public Employee getByID(Integer id) ;
 }

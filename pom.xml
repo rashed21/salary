@@ -122,11 +122,8 @@
 			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
-
-
-
-              
-               
-               
 	</dependencies>	
+	<build>
+	<finalName>salary</finalName>
+	</build>
 </project>

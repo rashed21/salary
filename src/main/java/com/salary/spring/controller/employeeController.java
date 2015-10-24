@@ -49,7 +49,7 @@ public class employeeController {
 	@RequestMapping(value="/insertEmp/{curIn}" ,method=RequestMethod.POST)	
 	public ModelAndView insert(@PathVariable("curIn") Integer currentIns,Employee employee,ModelMap m, ModelAndView mv){	
 		
-		System.out.println(currentIns);
+		
 		List<Institution> insList= institutionSer.selectAll();
 		
 		employee.setInstitute(currentIns);

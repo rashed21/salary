@@ -26,15 +26,25 @@ public interface SalaryMapper  {
 	
 	//@Select("select * from salarys join  insInfo on salarys.insIdfk = insInfo.insId  join  user on insInfo.insId=user.user_id   ORDER BY insIdfk")
 
-	@Select("select * from salary.salarys join  salary.insInfo on salarys.insIdfk = insInfo.insId  where insInfo.userId=#{user} ORDER BY insIdfk")
+//	@Select("select * from salary.salarys join  salary.insInfo on salarys.empIdfk = insInfo.insId  where insInfo.userId=#{user} ORDER BY empIdfk")
+	
+	
+	@Select("select * from salarys  join  salary.employee on salarys.empIdfk = employee.empId  and employee.institute=#{ins}  ORDER BY empIdfk")
 	public List<Salary> selectAll(Integer user);
 	
-	@Select("select insIdfk, sum(bsaic) as bsaic,  sum(homeRent) as homeRent, sum(medical) as medical, sum(tifin) as tifin, sum(transport) as transport, sum(education) as education, sum(extra) as extra, sum(others) as others, sum(proFund) as proFund, sum(loan) as loan, sum(olherLoan) as olherLoan"
-			+ " from salarys  join  salary.insInfo on salarys.insIdfk = insInfo.insId  where insInfo.userId=#{user} GROUP BY insIdfk ORDER BY insIdfk ")
+//	@Select("select empIdfk, sum(bsaic) as bsaic,  sum(homeRent) as homeRent, sum(medical) as medical, sum(tifin) as tifin, sum(transport) as transport, sum(education) as education, sum(extra) as extra, sum(others) as others, sum(proFund) as proFund, sum(loan) as loan, sum(olherLoan) as olherLoan"
+//			+ " from salarys  join  salary.insInfo on salarys.empIdfk = insInfo.insId  where insInfo.userId=#{user} GROUP BY empIdfk ORDER BY empIdfk ")
+	
+	
+	@Select("select * from salarys  join  salary.employee on salarys.empIdfk = employee.empId  and employee.institute=#{ins}  ORDER BY empIdfk")
 	public List<Salary> selectAllGroubBy(Integer user);
 	
-	@Insert("insert into salarys(insIdfk,empName, bsaic, homeRent, medical, tifin,transport, education, extra, others, proFund,loan,olherLoan) "
-			+ "values(#{insIdfk}, #{empName}, #{bsaic}, #{homeRent}, #{medical}, #{tifin}, #{transport}, #{education}, #{extra}, #{others}, #{proFund}, #{loan}, #{olherLoan})")
+	
+	@Select("select * from salarys  join  salary.employee on salarys.empIdfk = employee.empId  and employee.institute=#{ins}  ORDER BY empIdfk")
+	public List<Salary> selectAllGroubByInstitute(Integer ins);
+	
+	@Insert("insert into salarys(empIdfk,empName, bsaic, homeRent, medical, tifin,transport, education, extra, others, proFund,loan,olherLoan) "
+			+ "values(#{empIdfk}, #{empName}, #{bsaic}, #{homeRent}, #{medical}, #{tifin}, #{transport}, #{education}, #{extra}, #{others}, #{proFund}, #{loan}, #{olherLoan})")
 	public void insert(Salary salary);
 	
 	

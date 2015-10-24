@@ -12,9 +12,13 @@ import java.io.Serializable;
 public class Salary implements Serializable{
 	private int salId;
 	
-	private int insIdfk;
+	private int empIdfk;
+	
+	private int institutionFk;
 	
 	private String empName;
+	
+	private String name;
 	
 	private double bsaic;
 	
@@ -47,12 +51,36 @@ public class Salary implements Serializable{
 		this.salId = salId;
 	}
 
-	public int getInsIdfk() {
-		return insIdfk;
+	
+
+
+	public int getEmpIdfk() {
+		return empIdfk;
 	}
 
-	public void setInsIdfk(int insIdfk) {
-		this.insIdfk = insIdfk;
+	public void setEmpIdfk(int empIdfk) {
+		this.empIdfk = empIdfk;
+	}
+
+	
+	
+	
+	
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getInstitutionFk() {
+		return institutionFk;
+	}
+
+	public void setInstitutionFk(int institutionFk) {
+		this.institutionFk = institutionFk;
 	}
 
 	public String getEmpName() {

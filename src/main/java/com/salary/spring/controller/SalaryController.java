@@ -19,9 +19,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 
+
+
 import com.salary.spring.businesslogic.Calculation;
+import com.salary.spring.entity.Employee;
 import com.salary.spring.entity.Institution;
 import com.salary.spring.entity.Salary;
+import com.salary.spring.service.EmployeeService;
 import com.salary.spring.service.InstitutionService;
 import com.salary.spring.service.SalaryService;
 
@@ -39,6 +43,9 @@ public class SalaryController {
 	@Autowired
 	InstitutionService institutionSer;
 	
+	@Autowired
+	EmployeeService employeeService;
+	
 	Calculation calculation=new Calculation();
 	
 	
@@ -55,9 +62,9 @@ public class SalaryController {
 	@RequestMapping(value="/salary" ,method=RequestMethod.GET)
 	public ModelAndView index(ModelMap m,Salary value, ModelAndView mv){
 		
-		List<Salary> salaryList= salaryService.selectAll(1);
+		List<Salary> salaryList= salaryService.selectAll(11);
 		
-		List<Salary> salGroupBy= salaryService.selectAllGroubBy(1);
+		List<Salary> salGroupBy= salaryService.selectAllGroubBy(11);
 //		for listitution List
 		List<Institution> insList= institutionSer.selectAll();
 		
@@ -65,6 +72,7 @@ public class SalaryController {
 		
 		m.addAttribute("salary", new Salary());
 		m.addAttribute("institute", new Institution());	
+		m.addAttribute("employees", new Employee());
 		
 //		//return back to salary.jsp
 		ModelAndView model = new ModelAndView("salary");
@@ -74,22 +82,58 @@ public class SalaryController {
 		return model;	
 	}
 	
+//	@RequestMapping(value="/userEmployees",method=RequestMethod.POST)	
+//	public ModelAndView institution(Employee employ,ModelAndView mv,ModelMap m){
+//		List<Institution> insList= institutionSer.selectAll();
+//		List<Employee> employeeList= employeeService.allEmployeeOnInstute(employ.getInstitute());
+//		
+//		ModelAndView model = new ModelAndView("salary");
+//		model.addObject("lists", insList);
+//	model.addObject("emplList", employeeList);
+//		return model;		
+//	}
+//	
 	
-	@RequestMapping(value="/addSalary" ,method=RequestMethod.POST)	
-	public String insert(Salary salary){
-		Salary calculateSalary=new Salary();
-		calculateSalary=calculation.calculation(salary);		
-		salaryService.insert(calculateSalary);
+	
+//	@RequestMapping(value="/addSalary" ,method=RequestMethod.POST)	
+//	public String insert(Salary salary){
+//		Salary calculateSalary=new Salary();
+//		calculateSalary=calculation.calculation(salary);		
+//		salaryService.insert(calculateSalary);
+//		
+////		Institution institution=new Institution();
+////		institution=institutionSer.getByName("0,Karatitola");
+////		System.out.println(institution.getLocation());	
+//		return "redirect:/salary";
+//		
+//	}
+//	
+	
+	@RequestMapping(value="/userEmployees" ,method=RequestMethod.POST)	
+	public ModelAndView insert(Salary salary,Employee employ){
 		
-		Institution institution=new Institution();
-		institution=institutionSer.getByName("0,Karatitola");
-	System.out.println(institution.getLocation());
+		if(salary.getBsaic()>2000){
+			Salary calculateSalary=new Salary();
+			calculateSalary=calculation.calculation(salary);		
+			salaryService.insert(calculateSalary);
+			salary.setBsaic(00.00);
+			
+		}
+	
+				
+		List<Institution> insList= institutionSer.selectAll();
+		List<Employee> employeeList= employeeService.allEmployeeOnInstute(salary.getInstitutionFk());
 		
-
-		return "redirect:/salary";
+		ModelAndView model = new ModelAndView("salary");
+		model.addObject("lists", insList);
+		model.addObject("emplList", employeeList);
+		model.addObject("currentInst", institutionSer.getById(salary.getInstitutionFk()));
+		model.addObject("currentEmployee",employeeService.getById(salary.getEmpIdfk()));
+		model.addObject("salaryOnInstitute", salaryService.selectAllSalaryOnInstitute(salary.getInstitutionFk()));
+		
+		return model;
 		
 	}
-	
 	
 	@RequestMapping(value = "/deleteSal/{mid}", method = RequestMethod.GET)
     public String delete(@PathVariable("mid") Integer m){        

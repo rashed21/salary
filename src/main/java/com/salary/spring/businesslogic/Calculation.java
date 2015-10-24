@@ -29,7 +29,7 @@ public class Calculation implements Serializable {
 		salary.setProFund(sal.getProFund());
 		salary.setOlherLoan(sal.getOlherLoan());
 		salary.setLoan(sal.getLoan());
-		salary.setInsIdfk(sal.getInsIdfk());
+		salary.setEmpIdfk(sal.getEmpIdfk());
 	
 		return salary;
 		

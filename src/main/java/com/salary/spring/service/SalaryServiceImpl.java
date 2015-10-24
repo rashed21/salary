@@ -49,6 +49,12 @@ public class SalaryServiceImpl implements SalaryService {
 		return salaryMapper.getById(id);
 	}
 
+	@Transactional(readOnly=true)
+	public List<Salary> selectAllSalaryOnInstitute(Integer id) {
+		
+		return salaryMapper.selectAllGroubByInstitute(id);
+	}
+
 
 	
 

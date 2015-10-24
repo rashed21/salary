@@ -9,37 +9,91 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Welcome</title>
+		  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	</head> 
-	<body>
+		<body style="background-color:#193147;">
 	
-	
-	
-	
-	
-		<h2>welcome ${userentity.firstname} spring configuration</h2>
-		
-		
-		<c:url value="/insert" var="insert" />
+<div class="jumbotron" style="background-color:#193147; color: white;">
+<div class="container" style="background-color:#193147;">
+  
+  <div class="jumbotron" style="background-color:#193147;">
+  
+    <div class="row">
+    <div class="col-md-8">
+    <h1>Welcome To Be a Good Friend.....</h1>      
+    <p>Just Three step to for first Time To Ready Salary Sheet</p>  
+    <p>From Second Time it will Take just some moment to ready Your Salary</p>
+     </div>
+    <div class="col-md-4">
+    
+    
+     
+    <c:if test="${loginVal==10}">
+   
+    
+  <c:url value="/insert" var="insert" />
 		<form:form action="${insert}" method="post" commandName="user">
-		User  Name
-		<form:input type="text" path="userName"/><br/>
+  <div class="form-group">
+    <label >User Name</label>
+  <form:input type="text" path="userName" class="form-control"  />
+  </div>
+ 
+  <div class="form-group">
+    <label >Password</label>
+    <form:input type="text" path="password" class="form-control"   placeholder="Password"/>
+  </div>  
+  <button type="submit" class="btn btn-default">Submit</button>
+</form:form> 
+    </c:if>
+    
+    
+    
+    
+  <c:if test="${loginVal!=10}">  
+    <c:url value="/insert" var="insert" />
+		<form:form action="${insert}" method="post" commandName="user">
+  <div class="form-group">
+    <label >User Name</label>
+  <form:input type="text" path="userName" class="form-control"  />
+  </div>
+  <div class="form-group">
+    <label >First Name</label>
+   <form:input type="text" path="firstName" class="form-control"  />
+    <label >Last Name</label>
+   <form:input type="text" path="lastName" class="form-control"  />
+  </div>
+  <div class="form-group">
+    <label >E-mail</label>
+   <form:input type="email" path="email" class="form-control" />
+    <label >Password</label>
+    <form:input type="text" path="password" class="form-control"   placeholder="Password"/>
+  </div>
+ 
+
+  
+  <button type="submit" class="btn btn-default">Submit</button>
+</form:form>
+    
+   </c:if>
+    
+    
+     </div>
+      </div>
+    </div>
+</div>		
 		
-		User  First Name
-		<form:input type="text" path="firstName"/><br/>
+	</body>
+           
+  </div>
+
+	
+	
+	
+	
+	
 		
-		User  Last Name
-		<form:input type="text" path="lastName"/><br/>
-		
-		User  Email
-		<form:input type="text" path="email"/><br/>
-		
-		User  Password
-		<form:input type="text" path="password"/><br/>
-		
-		
-		<input type="submit" value="Insert"/>
-		 
-		</form:form>
 		
 		
 		

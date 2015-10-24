@@ -53,8 +53,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Transactional(readOnly=true)
 	public Employee getById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		return employeeMapper.getByID(id);
 	}
 
 	

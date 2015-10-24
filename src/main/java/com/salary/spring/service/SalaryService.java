@@ -19,6 +19,8 @@ public interface SalaryService {
 public List<Salary> selectAll(Integer id);
 
 public List<Salary> selectAllGroubBy(Integer id);
+
+public List<Salary> selectAllSalaryOnInstitute(Integer id);
 	
 	public void insert(Salary salary);
 	
